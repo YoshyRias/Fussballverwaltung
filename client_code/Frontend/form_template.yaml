@@ -1,0 +1,30 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'DXBOIV,TWKBIU'}
+    name: label_1
+    properties: {}
+    type: Label
+  - components:
+    - name: repeating_panel_1
+      properties: {item_template: Frontend.RowTemplate1}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'YTGETZ,MVVYGK'}
+    name: data_grid_fussballverein
+    properties:
+      columns:
+      - {data_key: column_1, id: JKSDUP, title: Column 1}
+      - {data_key: column_2, id: VJQQOR, title: Column 2}
+      - {data_key: column_3, id: OJLQEN, title: Column 3}
+    type: DataGrid
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true
