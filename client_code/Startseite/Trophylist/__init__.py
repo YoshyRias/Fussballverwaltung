@@ -7,16 +7,17 @@ from anvil.tables import app_tables
 
 
 class Trophylist(TrophylistTemplate):
-  def __init__(self, **properties):
+  def __init__(self, row_dict, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    query = '''
+    query = f"""
     SELECT t.name, ft.jahr, m.kategorie 
     FROM Fussballverein_Trophaeen ft
     JOIN Trophaeen t ON t.TrID = ft.TrID
     JOIN Mannschaft m ON m.FID = ft.FID
-    WHERE 
+    WHERE t.name = {row_dict["Name"]}
+    """
+    res = anvil.server.call(('query_database_dict', query)
     
-    '''

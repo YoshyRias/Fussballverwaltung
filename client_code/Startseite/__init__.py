@@ -14,3 +14,8 @@ class Startseite(StartseiteTemplate):
     # Any code you write here will run before the form opens.
     res = anvil.server.call('query_database_dict', "SELECT name, gruendungsjahr FROM Fussballverein")
     self.repeating_panel_vereine.items = res
+
+  @handle("outlined_button_1", "click")
+  def outlined_button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite.Trophylist', self.repeating_panel_vereine.items)
