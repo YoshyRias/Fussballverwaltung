@@ -12,3 +12,7 @@ class RowTemplate(RowTemplateTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+  @handle("button_choose", "click")
+  def button_choose_click(self, **event_args):
+    open_form('Startseite.Trophylist', self.item["FID"])

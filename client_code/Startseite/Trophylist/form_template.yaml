@@ -2,7 +2,7 @@ components:
 - components:
   - layout_properties: {grid_position: 'VDWFIL,QVWSFZ'}
     name: label_header
-    properties: {}
+    properties: {bold: true, font_size: 20}
     type: Label
   - components:
     - name: repeating_panel_trophies
@@ -16,6 +16,10 @@ components:
       - {data_key: Jahr, id: VJQQOR, title: Jahr}
       - {data_key: Kategorie, id: OJLQEN, title: Mannschaftskategorie}
     type: DataGrid
+  - layout_properties: {grid_position: 'YDWMXT,ZCHPFK'}
+    name: plot_trophies_per_year
+    properties: {visible: true}
+    type: Plot
   layout_properties: {slot: default}
   name: content_panel
   properties: {}
