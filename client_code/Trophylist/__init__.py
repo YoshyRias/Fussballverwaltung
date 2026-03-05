@@ -6,14 +6,13 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-
 class Trophylist(TrophylistTemplate):
   def __init__(self, id, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    # Any code you write here will run before the form opens.
     
+    # Any code you write here will run before the form opens.
+    self.cur_id = id
     res = anvil.server.call('query_database_dict_trophies', id)
     self.repeating_panel_trophies.items = res
     self.label_header.text = anvil.server.call('query_database_clubname', id)
@@ -23,7 +22,7 @@ class Trophylist(TrophylistTemplate):
 
   def configure_plot(self, id):
     jahre, anzahl = anvil.server.call('get_trophy_stats_by_club', id)
-
+    
     self.plot_trophies_per_year.data = [
       {
         "x": jahre,

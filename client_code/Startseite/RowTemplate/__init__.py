@@ -15,4 +15,4 @@ class RowTemplate(RowTemplateTemplate):
 
   @handle("button_choose", "click")
   def button_choose_click(self, **event_args):
-    open_form('Startseite.Trophylist', self.item["FID"])
+    open_form('Trophylist', self.item["FID"])

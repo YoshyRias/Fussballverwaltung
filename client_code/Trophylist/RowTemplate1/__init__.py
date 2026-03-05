@@ -12,3 +12,10 @@ class RowTemplate1(RowTemplate1Template):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    
+
+  @handle("button_choose", "click")
+  def button_choose_click(self, **event_args):
+    main_form = self.parent.parent.parent.parent
+    open_form('Squad', main_form., )
+    

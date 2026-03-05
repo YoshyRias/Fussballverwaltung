@@ -6,7 +6,7 @@ components:
     type: Label
   - components:
     - name: repeating_panel_trophies
-      properties: {item_template: Startseite.Trophylist.RowTemplate1}
+      properties: {item_template: Trophylist.RowTemplate1}
       type: RepeatingPanel
     layout_properties: {grid_position: 'MWOUTX,PRFVGB'}
     name: data_grid_1
@@ -15,6 +15,7 @@ components:
       - {data_key: Name, id: JKSDUP, title: Name}
       - {data_key: Jahr, id: VJQQOR, title: Jahr}
       - {data_key: Kategorie, id: OJLQEN, title: Mannschaftskategorie}
+      - {data_key: column_1, id: DJHINO, title: Auswählen}
     type: DataGrid
   - layout_properties: {grid_position: 'YDWMXT,ZCHPFK'}
     name: plot_trophies_per_year

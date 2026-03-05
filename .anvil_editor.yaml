@@ -3,10 +3,11 @@ unique_ids:
     standard-page.html: K37GREMAWP6FNNAJJI7I56WUMDXTDBOB
     theme.css: BGR2I3EXKEYTNHQH2PCDNECCAJHJC4A7
   forms:
+    Squad: '1772708619263969795029487.9052'
     Startseite: IKHGOOPCBCXVWBF6SLR4LY2FQ3XC363Q
     Startseite.RowTemplate: '1772104175210595405976981.2539'
-    Startseite.Trophylist: '1772104382950322408093056.11005'
-    Startseite.Trophylist.RowTemplate1: '1772104440004764044814538.6339'
+    Trophylist: '1772104382950322408093056.11005'
+    Trophylist.RowTemplate1: '1772104440004764044814538.6339'
   modules: {}
   scripts: {}
   server_modules:
