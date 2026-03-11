@@ -15,12 +15,28 @@ def query_database():
   return result
 
 @anvil.server.callable
-def query_database_club_per_trophy(trid:int, fid:int):
-  query = f"SELECT fid FROM Fussballverein_Trophaeen WHERE TrID = {trid} AND FID = {fid}"
+def query_database_trophy_id(name:str):
+  query = f"SELECT trid FROM Trophaeen WHERE name='{name}'"
   with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
-  return result
+  return result[0][0]
+
+@anvil.server.callable
+def query_database_club_per_trophy(id:int):
+  query = f"SELECT fid FROM Fussballverein_Trophaeen ft WHERE ft.id = {id}"
+  with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
+    cur = conn.cursor()
+    result = cur.execute(query).fetchall()
+  return result[0][0]
+
+@anvil.server.callable
+def query_database_trophy_club_id(trophy_id:int, club_id):
+  query = f"SELECT id FROM Fussballverein_Trophaeen ft WHERE ft.trid = {trophy_id} AND ft.fid = {club_id}"
+  with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
+    cur = conn.cursor()
+    result = cur.execute(query).fetchall()
+  return result[0][0]
   
 @anvil.server.callable
 def query_database_clubname(id:int):

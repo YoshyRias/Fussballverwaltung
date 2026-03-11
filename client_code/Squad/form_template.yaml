@@ -1,5 +1,6 @@
 components:
-- layout_properties: {slot: default}
+- components: []
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
@@ -17,7 +18,7 @@ components:
   type: FlowPanel
 - layout_properties: {slot: title}
   name: label_header
-  properties: {}
+  properties: {bold: true, font_size: 20}
   type: Label
 container:
   properties: {html: '@theme:standard-page.html'}

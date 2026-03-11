@@ -2,7 +2,9 @@ components:
 - event_bindings: {}
   layout_properties: {column: SJQXGB}
   name: button_choose
-  properties: {text: button_1}
+  properties:
+    text: |
+      Auswählen
   type: Button
 container: {type: DataRowPanel}
 is_package: true

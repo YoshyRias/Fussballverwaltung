@@ -19,7 +19,6 @@ class Trophylist(TrophylistTemplate):
     self.configure_plot(id)
 
 
-
   def configure_plot(self, id):
     jahre, anzahl = anvil.server.call('get_trophy_stats_by_club', id)
     
@@ -45,3 +44,8 @@ class Trophylist(TrophylistTemplate):
       },
       "bargap": 0.5 # Steuert die Breite der Balken (0.5 = 50% Lücke)
     }
+
+  @handle("button_back", "click")
+  def button_back_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite')
