@@ -15,6 +15,7 @@ class Squad(SquadTemplate):
     self.trophy_club_id = id
     self.club_id = anvil.server.call('query_database_club_per_trophy', self.trophy_club_id)
     self.label_header.text = anvil.server.call('query_database_clubname', self.club_id)
+    
   @handle("button_back", "click")
   def button_back_click(self, **event_args):
     open_form('Trophylist', self.club_id)
