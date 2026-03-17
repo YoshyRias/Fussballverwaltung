@@ -1,7 +1,7 @@
 components:
 - components:
   - components:
-    - name: repeating_panel_1
+    - name: repeating_panel_squad
       properties: {item_template: Squad.RowTemplate2}
       type: RepeatingPanel
     layout_properties: {grid_position: 'RJKGAZ,GKTGBU'}
@@ -12,6 +12,10 @@ components:
       - {data_key: Alter, id: VJQQOR, title: Alter}
       - {data_key: Position, id: OJLQEN, title: Position}
     type: DataGrid
+  - layout_properties: {grid_position: 'YMHZCZ,NWTTOG'}
+    name: plot_squad
+    properties: {}
+    type: Plot
   layout_properties: {slot: default}
   name: content_panel
   properties: {}

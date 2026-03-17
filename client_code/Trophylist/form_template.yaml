@@ -11,8 +11,18 @@ components:
       - {data_key: Name, id: JKSDUP, title: Name}
       - {data_key: Jahr, id: VJQQOR, title: Jahr}
       - {data_key: Kategorie, id: OJLQEN, title: Mannschaftskategorie}
-      - {data_key: column_1, id: DJHINO, title: Auswählen}
+      - {data_key: column_1, id: DJHINO, title: Kader}
     type: DataGrid
+  - components:
+    - data_bindings: []
+      layout_properties: {grid_position: 'ITYBYB,IMEYZH'}
+      name: label_1
+      properties: {bold: true, font_size: 17, italic: true, text: 'Anzahl der Trophäen pro Jahr:', underline: true}
+      type: Label
+    layout_properties: {grid_position: 'ENKBWC,LMEXPW'}
+    name: outlined_card_1
+    properties: {role: outlined-card}
+    type: ColumnPanel
   - layout_properties: {grid_position: 'YDWMXT,ZCHPFK'}
     name: plot_trophies_per_year
     properties: {visible: true}

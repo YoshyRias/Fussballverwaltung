@@ -15,6 +15,22 @@ def query_database():
   return result
 
 @anvil.server.callable
+def query_database_positions_count(id:int):
+  query = f"""SELECT Position, COUNT(SID) as Anzahl
+  FROM Spieler
+  WHERE MID = {id}
+  GROUP BY Position;"""
+  
+  with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
+    cur = conn.cursor()
+    res = cur.execute(query).fetchall()
+  
+  labels = [row[0] for row in res]
+  values = [row[1] for row in res]
+
+  return labels, values
+
+@anvil.server.callable
 def query_database_trophy_id(name:str):
   query = f"SELECT trid FROM Trophaeen WHERE name='{name}'"
   with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
@@ -62,6 +78,17 @@ def query_database_dict_trophies(id:int):
     JOIN Trophaeen t ON t.TrID = ft.TrID
     JOIN Mannschaft m ON m.FID = ft.FID
     WHERE ft.FID = {id};"""
+  with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    result = cur.execute(query).fetchall()
+  return [dict(row) for row in result]
+
+@anvil.server.callable
+def query_database_dict_squad(id:int):
+  query = f"""SELECT Name, "Alter", Position 
+    FROM Spieler s
+    WHERE s.MID = {id};"""
   with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()

@@ -11,7 +11,7 @@ components:
       - {data_key: FID, id: LFHWPL, title: Nummer}
       - {data_key: Name, id: JKSDUP, title: Vereinsname}
       - {data_key: Gruendungsjahr, id: VJQQOR, title: Gründungsjahr}
-      - {data_key: column_1, id: SJQXGB, title: Auswählen}
+      - {data_key: column_1, id: SJQXGB, title: Trophäen}
     type: DataGrid
   layout_properties: {slot: default}
   name: content_panel
