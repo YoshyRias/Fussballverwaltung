@@ -45,6 +45,29 @@ components:
   name: label_header
   properties: {bold: true, font_size: 20}
   type: Label
+- components:
+  - layout_properties: {grid_position: 'ERJZAM,BLXRTI'}
+    name: button_home
+    properties: {role: outlined-button, text: Home}
+    type: Button
+  - layout_properties: {grid_position: 'WQTQIO,SVOTUE'}
+    name: spacer_1
+    properties: {height: 32}
+    type: Spacer
+  - event_bindings: {}
+    layout_properties: {grid_position: 'MDGACD,UWLRPO'}
+    name: drop_down_squad
+    properties: {}
+    type: DropDown
+  - event_bindings: {}
+    layout_properties: {grid_position: 'ARUMMO,EPUIIG'}
+    name: outlined_button_squad
+    properties: {role: outlined-button, text: Kader ansehen}
+    type: Button
+  layout_properties: {slot: left-nav}
+  name: column_panel_sidebar
+  properties: {}
+  type: ColumnPanel
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate

@@ -39,3 +39,8 @@ class Squad(SquadTemplate):
     self.plot_squad.layout = {
       "title": "Kaderanteile nach Positionen"
     }
+
+  @handle("button_home", "click")
+  def button_home_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite')

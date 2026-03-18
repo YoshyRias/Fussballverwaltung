@@ -11,8 +11,4 @@ class RowTemplate(RowTemplateTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
-
-  @handle("button_choose", "click")
-  def button_choose_click(self, **event_args):
-    open_form('Trophylist', self.item["FID"])
+    

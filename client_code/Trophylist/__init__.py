@@ -13,39 +13,53 @@ class Trophylist(TrophylistTemplate):
     
     # Any code you write here will run before the form opens.
     self.cur_id = id
-    res = anvil.server.call('query_database_dict_trophies', id)
-    self.repeating_panel_trophies.items = res
+    self.res = anvil.server.call('query_database_dict_trophies', id)
+    self.repeating_panel_trophies.items = self.res
     self.label_header.text = anvil.server.call('query_database_clubname', id)
     self.configure_plot(id)
+    self.drop_down_trophy.items = [f"{i['Name']} ({i['Jahr']})" for i in self.res]
 
 
   def configure_plot(self, id):
     jahre, anzahl = anvil.server.call('get_trophy_stats_by_club', id)
-    
-    self.plot_trophies_per_year.data = [
-      {
-        "x": jahre,
-        "y": anzahl,
-        "type": "bar",        # Balkendiagramm (oder "scatter" für eine Linie)
-        "marker": {"color": "#2196F3"}
-      }
-    ]
 
-    self.plot_trophies_per_year.layout = {
-      "title": "Gewonnene Trophäen pro Jahr",
-      "xaxis": {
-        "type": "category",  # Zwingt Plotly, Jahre als einzelne Labels zu sehen
-        "title": "Jahr",
-        "categoryorder": "category ascending" # Sortiert sie chronologisch
-      },
-      "yaxis": {
-        "title": "Anzahl Trophäen",
-        "dtick": 1 # Verhindert halbe Trophäen (1.5, 2.5) auf der Y-Achse
-      },
-      "bargap": 0.5 # Steuert die Breite der Balken (0.5 = 50% Lücke)
-    }
+    balken = go.Bar(
+      x = jahre,
+      y = anzahl,
+      marker=dict(color="#17ecda")
+    )
+    
+    self.plot_trophies_per_year.data = [balken]
+
+    self.plot_trophies_per_year.layout.yaxis.dtick = 1
+    self.plot_trophies_per_year.layout.xaxis.type = "category"
+    self.plot_trophies_per_year.layout.bargap = 0.5
+    self.plot_trophies_per_year.layout.title = "SigmaLigma"
 
   @handle("button_back", "click")
   def button_back_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Startseite')
+
+  @handle("button_home", "click")
+  def button_home_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite')
+
+  @handle("outlined_button_squad", "click")
+  def outlined_button_squad_click(self, **event_args):
+    id = anvil.server.call('query_database_trophy_club_id', self.current_tr_id, self.current_tr_id)
+    open_form('Squad', combined_id)
+
+  @handle("drop_down_squad", "change")
+  def drop_down_squad_change(self, **event_args):
+    """This method is called when an item is selected"""
+    selected = self.drop_down_squad.selected_value
+  
+    # We then extract both TrID and FID
+    match = next(i for i in self.res if f"{i['Name']} ({i['Jahr']})" == selected)
+  
+    self.current_tr_id = match['TrID']
+    self.current_f_id = match['FID']
+
+  

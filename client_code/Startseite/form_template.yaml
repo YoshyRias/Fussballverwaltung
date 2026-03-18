@@ -4,6 +4,11 @@ components:
     - name: repeating_panel_vereine
       properties: {item_template: Startseite.RowTemplate}
       type: RepeatingPanel
+    - components: []
+      layout_properties: {slot: footer}
+      name: column_panel_1
+      properties: {}
+      type: ColumnPanel
     layout_properties: {grid_position: 'QSIEJX,YHBJTM'}
     name: data_grid_fussballverein
     properties:
@@ -11,7 +16,6 @@ components:
       - {data_key: FID, id: LFHWPL, title: Nummer}
       - {data_key: Name, id: JKSDUP, title: Vereinsname}
       - {data_key: Gruendungsjahr, id: VJQQOR, title: Gründungsjahr}
-      - {data_key: column_1, id: SJQXGB, title: Trophäen}
     type: DataGrid
   layout_properties: {slot: default}
   name: content_panel
@@ -25,6 +29,29 @@ components:
   name: label_header
   properties: {bold: true, font_size: 27, italic: true, text: Fußballvereine, underline: true}
   type: Label
+- components:
+  - layout_properties: {grid_position: 'WFRULB,OXTKCL'}
+    name: button_home
+    properties: {role: outlined-button, text: Home}
+    type: Button
+  - layout_properties: {grid_position: 'HXDZDS,HKLDUX'}
+    name: spacer_1
+    properties: {height: 32}
+    type: Spacer
+  - event_bindings: {}
+    layout_properties: {grid_position: 'ROWEST,YZHSWW'}
+    name: drop_down_club
+    properties: {}
+    type: DropDown
+  - event_bindings: {}
+    layout_properties: {grid_position: 'DGDRSC,YDBESD'}
+    name: outlined_button_trophylist
+    properties: {role: outlined-button, text: Trophäen ansehen}
+    type: Button
+  layout_properties: {slot: left-nav}
+  name: column_panel_sidebar
+  properties: {}
+  type: ColumnPanel
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
