@@ -41,10 +41,17 @@ def query_database_trophy_id(name:str):
 @anvil.server.callable
 def query_database_club_per_trophy(id:int):
   query = f"SELECT fid FROM Fussballverein_Trophaeen ft WHERE ft.id = {id}"
+  sql = f""" SELECT Trophaeen.Name AS Name, Fussballverein_Trophaeen.Jahr AS Jahr FROM Fussballverein_Trophaeen 
+  JOIN Trophaeen
+  ON Fussballverein_Trophaeen.TrID = Trophaeen.TrID
+  WHERE Fussballverein_Trophaeen.ID = '{id}'
+  """
+
   with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
-  return result[0][0]
+    trophy = cur.execute(sql).fetchall()
+  return result[0][0],trophy[0][0]
 
 @anvil.server.callable
 def query_database_trophy_club_id(trophy_id:int, club_id):
