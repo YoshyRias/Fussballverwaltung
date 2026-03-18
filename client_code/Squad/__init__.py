@@ -18,6 +18,8 @@ class Squad(SquadTemplate):
     self.label_header.text = anvil.server.call('query_database_clubname', self.club_id)
     self.repeating_panel_squad.items = anvil.server.call('query_database_dict_squad', self.club_id)
     self.update_position_chart(self.club_id)
+    trainer = anvil.server.call('query_database_dict_trainer', self.club_id)
+    self.label_Trophaee_name.text = self.trophy[0] + " " + str(self.trophy[1]) + " | Trainer: " + trainer
 
     print(self.trophy)
 

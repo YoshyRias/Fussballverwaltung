@@ -51,7 +51,7 @@ def query_database_club_per_trophy(id:int):
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
     trophy = cur.execute(sql).fetchall()
-  return result[0][0],trophy[0][0]
+  return result[0][0],trophy[0]
 
 @anvil.server.callable
 def query_database_trophy_club_id(trophy_id:int, club_id):
@@ -90,6 +90,17 @@ def query_database_dict_trophies(id:int):
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
   return [dict(row) for row in result]
+
+@anvil.server.callable
+def query_database_dict_trainer(id:int):
+  query = f"""SELECT Name 
+    FROM Trainer t
+    WHERE t.MID = {id};"""
+  with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    result = cur.execute(query).fetchall()
+  return result
 
 @anvil.server.callable
 def query_database_dict_squad(id:int):
