@@ -17,7 +17,8 @@ class Trophylist(TrophylistTemplate):
     self.repeating_panel_trophies.items = self.res
     self.label_header.text = anvil.server.call('query_database_clubname', id)
     self.configure_plot(id)
-    self.drop_down_trophy.items = [f"{i['Name']} ({i['Jahr']})" for i in self.res]
+    self.drop_down_squad.items = [f"{i['Name']} ({i['Jahr']})" for i in self.res]
+    self.drop_down_squad_change()
 
 
   def configure_plot(self, id):
@@ -48,18 +49,15 @@ class Trophylist(TrophylistTemplate):
 
   @handle("outlined_button_squad", "click")
   def outlined_button_squad_click(self, **event_args):
-    id = anvil.server.call('query_database_trophy_club_id', self.current_tr_id, self.current_tr_id)
-    open_form('Squad', combined_id)
+    id = anvil.server.call('query_database_trophy_club_id', self.cur_trid, self.cur_fid)
+    open_form('Squad', id)
 
   @handle("drop_down_squad", "change")
   def drop_down_squad_change(self, **event_args):
     """This method is called when an item is selected"""
     selected = self.drop_down_squad.selected_value
   
-    # We then extract both TrID and FID
     match = next(i for i in self.res if f"{i['Name']} ({i['Jahr']})" == selected)
   
-    self.current_tr_id = match['TrID']
-    self.current_f_id = match['FID']
-
-  
+    self.cur_trid = match['TrID']
+    self.cur_fid = match['FID']

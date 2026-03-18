@@ -73,7 +73,7 @@ def query_database_dict_clubs():
 
 @anvil.server.callable
 def query_database_dict_trophies(id:int):
-  query = f"""SELECT t.name, ft.jahr, m.kategorie 
+  query = f"""SELECT t.name, ft.jahr, m.kategorie, ft.trid, ft.fid 
     FROM Fussballverein_Trophaeen ft
     JOIN Trophaeen t ON t.TrID = ft.TrID
     JOIN Mannschaft m ON m.FID = ft.FID

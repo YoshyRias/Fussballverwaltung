@@ -33,12 +33,9 @@ class Squad(SquadTemplate):
       "values": values,
       "type": "pie",
       "hole": 0.4, # Macht ein Ring-Diagramm daraus (Donut-Chart), sieht moderner aus
-      "marker": {"colors": ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']} # Optionale Farben für Tor, Abwehr, etc.
+      "marker": {"colors": ['#9374fe', '#223ca2', '#0243bb', '#67afe5']} 
     }]
 
-    self.plot_squad.layout = {
-      "title": "Kaderanteile nach Positionen"
-    }
 
   @handle("button_home", "click")
   def button_home_click(self, **event_args):

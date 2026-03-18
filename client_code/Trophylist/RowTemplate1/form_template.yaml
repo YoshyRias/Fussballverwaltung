@@ -1,8 +1,3 @@
-components:
-- event_bindings: {}
-  layout_properties: {column: DJHINO}
-  name: button_choose
-  properties: {text: Auswählen}
-  type: Button
+components: []
 container: {type: DataRowPanel}
 is_package: true

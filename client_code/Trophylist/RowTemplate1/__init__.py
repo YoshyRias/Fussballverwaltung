@@ -13,11 +13,4 @@ class RowTemplate1(RowTemplate1Template):
 
     # Any code you write here will run before the form opens.
     
-
-  @handle("button_choose", "click")
-  def button_choose_click(self, **event_args):
-    main_form = self.parent.parent.parent.parent
-    trophy_id = anvil.server.call('query_database_trophy_id', self.item['Name'])
-    id = anvil.server.call('query_database_trophy_club_id', trophy_id, main_form.cur_id)
-    open_form('Squad', id)
     
