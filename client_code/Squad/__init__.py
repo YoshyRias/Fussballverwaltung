@@ -21,12 +21,6 @@ class Squad(SquadTemplate):
     trainer = anvil.server.call('query_database_dict_trainer', self.club_id)
     self.label_Trophaee_name.text = self.trophy[0] + " " + str(self.trophy[1]) + " | Trainer: " + trainer
 
-    print(self.trophy)
-
-    
-  @handle("button_back", "click")
-  def button_back_click(self, **event_args):
-    open_form('Trophylist', self.club_id)
 
   def update_position_chart(self, mid):
     # Daten vom Server holen
@@ -46,3 +40,7 @@ class Squad(SquadTemplate):
   def button_home_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Startseite')
+
+  @handle("label_header", "click")
+  def label_header_click(self, **event_args):
+    open_form('Trophylist', self.club_id)

@@ -97,10 +97,9 @@ def query_database_dict_trainer(id:int):
     FROM Trainer t
     WHERE t.MID = {id};"""
   with sqlite3.connect(data_files["fussball_verwaltung.db"]) as conn:
-    conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
-  return result
+  return result[0][0]
 
 @anvil.server.callable
 def query_database_dict_squad(id:int):
