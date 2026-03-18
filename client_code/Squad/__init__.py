@@ -18,6 +18,7 @@ class Squad(SquadTemplate):
     self.label_header.text = anvil.server.call('query_database_clubname', self.club_id)
     self.repeating_panel_squad.items = anvil.server.call('query_database_dict_squad', self.club_id)
     self.update_position_chart(self.club_id)
+    self.label_Trophaee_name.text =
     
   @handle("button_back", "click")
   def button_back_click(self, **event_args):
